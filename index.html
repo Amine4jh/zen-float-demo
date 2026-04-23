@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZEN FLOAT — Sensory Deprivation & Float Therapy</title>
+
+  <!-- Google Fonts: Cormorant Garamond (display) + Jost (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-gold':    '#D4AF37',
+            'brand-magenta': '#B33C86',
+            'brand-blue':    '#3B82F6',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'serif'],
+            body:    ['"Jost"', 'sans-serif'],
+          },
+          letterSpacing: {
+            'ultra': '0.35em',
+            'wide-xl': '0.2em',
+          },
+          animation: {
+            'fade-in-up':   'fadeInUp 1s ease both',
+            'fade-in':      'fadeIn 1.4s ease both',
+            'shimmer':      'shimmer 3s linear infinite',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%':   { opacity: '0', transform: 'translateY(28px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%':   { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            shimmer: {
+              '0%':   { backgroundPosition: '-200% center' },
+              '100%': { backgroundPosition: '200% center' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ── Base ── */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { font-family: 'Jost', sans-serif; }
+
+    body {
+      background-color: #09090b; /* zinc-950 */
+      color: #d1d5db;            /* gray-300 */
+      overflow-x: hidden;
+    }
+
+    /* ── Custom scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #09090b; }
+    ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 99px; }
+
+    /* ── Utility ── */
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+
+    /* Gold gradient text */
+    .gold-text {
+      background: linear-gradient(90deg, #c9a227 0%, #f0d060 40%, #c9a227 70%, #f0d060 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+
+    /* ── NAV ── */
+    #main-nav {
+      transition: background 0.4s ease, border-color 0.4s ease;
+    }
+    #main-nav.scrolled {
+      background: rgba(9,9,11,0.92);
+      backdrop-filter: blur(18px);
+      border-bottom-color: rgba(212,175,55,0.2);
+    }
+    .nav-link {
+      position: relative;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: #9ca3af;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: #D4AF37;
+      transition: width 0.35s ease;
+    }
+    .nav-link:hover { color: #D4AF37; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ── Language Toggle ── */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .lang-btn {
+      padding: 4px 10px;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #9ca3af;
+      transition: background 0.25s, color 0.25s;
+      cursor: pointer;
+    }
+    .lang-btn.active {
+      background: #D4AF37;
+      color: #09090b;
+    }
+    .lang-btn:not(.active):hover {
+      background: rgba(212,175,55,0.08);
+      color: #D4AF37;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    #hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(212,175,55,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(179,60,134,0.04) 0%, transparent 60%),
+        url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1600&q=80') center/cover no-repeat;
+      filter: brightness(0.22) saturate(0.5);
+    }
+    #hero-grain {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    /* Gold corner decorations */
+    #hero::before, #hero::after {
+      content: '';
+      position: absolute;
+      width: 80px; height: 80px;
+      border-color: rgba(212,175,55,0.25);
+      border-style: solid;
+    }
+    #hero::before {
+      top: 100px; left: 48px;
+      border-width: 1px 0 0 1px;
+    }
+    #hero::after {
+      bottom: 80px; right: 48px;
+      border-width: 0 1px 1px 0;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      letter-spacing: 0.42em;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: #D4AF37;
+      opacity: 0.85;
+      animation: fadeInUp 0.9s ease 0.2s both;
+    }
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.05;
+      color: #ffffff;
+      animation: fadeInUp 1s ease 0.45s both;
+    }
+    .hero-sub {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      letter-spacing: 0.04em;
+      color: #9ca3af;
+      animation: fadeInUp 1s ease 0.7s both;
+    }
+    .hero-cta {
+      animation: fadeInUp 1s ease 0.95s both;
+    }
+
+    /* Primary gold button */
+    .btn-gold {
+      display: inline-block;
+      padding: 15px 44px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #09090b;
+      background: #D4AF37;
+      border: 1px solid #D4AF37;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.35s, background 0.35s;
+      cursor: pointer;
+    }
+    .btn-gold::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .btn-gold:hover { background: #f0d060; }
+    .btn-gold:hover::before { opacity: 1; }
+
+    /* Ghost button */
+    .btn-ghost {
+      display: inline-block;
+      padding: 13px 36px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #D4AF37;
+      border: 1px solid rgba(212,175,55,0.45);
+      background: transparent;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+      cursor: pointer;
+    }
+    .btn-ghost:hover {
+      background: rgba(212,175,55,0.08);
+      border-color: #D4AF37;
+    }
+
+    /* ── Section Anatomy ── */
+    .section-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      letter-spacing: 0.38em;
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      color: #D4AF37;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+    .section-divider {
+      width: 40px; height: 1px;
+      background: linear-gradient(90deg, #D4AF37, transparent);
+      margin: 0 auto;
+    }
+
+    /* ── Services Cards ── */
+    .service-card {
+      background: #18181b; /* zinc-900 */
+      border: 1px solid rgba(212,175,55,0.12);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.4s, transform 0.4s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(179,60,134,0.07), transparent);
+      opacity: 0;
+      transition: opacity 0.45s;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+      transform: scaleX(0);
+      transition: transform 0.45s ease;
+    }
+    .service-card:hover {
+      border-color: rgba(212,175,55,0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 0 32px rgba(179,60,134,0.12), 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-card:hover::after  { transform: scaleX(1); }
+
+    .service-icon {
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(212,175,55,0.2);
+      color: #D4AF37;
+    }
+    .service-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #D4AF37;
+      line-height: 1;
+    }
+    .service-duration {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #6b7280;
+    }
+
+    /* ── FAQ Accordion ── */
+    .faq-item input[type="checkbox"] { display: none; }
+
+    .faq-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 28px;
+      cursor: pointer;
+      user-select: none;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #e5e7eb;
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+      transition: color 0.3s;
+    }
+    .faq-label:hover { color: #D4AF37; }
+
+    .faq-icon {
+      width: 22px; height: 22px;
+      flex-shrink: 0;
+      border: 1px solid rgba(212,175,55,0.3);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.4s ease, background 0.3s, border-color 0.3s;
+      font-size: 0.8rem;
+      color: #D4AF37;
+    }
+
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s ease;
+      font-weight: 300;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #9ca3af;
+      padding: 0 28px;
+    }
+
+    .faq-item input:checked ~ .faq-label { color: #D4AF37; }
+    .faq-item input:checked ~ .faq-label .faq-icon {
+      transform: rotate(45deg);
+      background: rgba(212,175,55,0.08);
+      border-color: #D4AF37;
+    }
+    .faq-item input:checked ~ .faq-body {
+      max-height: 220px;
+      padding: 20px 28px 26px;
+    }
+
+    /* highlight strip inside FAQ when open */
+    .faq-item {
+      border-left: 2px solid transparent;
+      transition: border-color 0.4s;
+    }
+    .faq-item:has(input:checked) {
+      border-left-color: #D4AF37;
+      background: rgba(212,175,55,0.025);
+    }
+
+    /* ── Ambiance / Testimonial strip ── */
+    .strip-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+    }
+
+    /* ── Footer ── */
+    footer a {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #6b7280;
+      transition: color 0.3s;
+    }
+    footer a:hover { color: #D4AF37; }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.22s; }
+    .reveal-delay-3 { transition-delay: 0.34s; }
+
+    /* ── Mobile nav ── */
+    #mobile-menu {
+      display: none;
+    }
+    #mobile-menu.open {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Responsive tweaks ── */
+    @media (max-width: 768px) {
+      #hero::before, #hero::after { width: 40px; height: 40px; top: 80px; left: 20px; }
+      #hero::after { bottom: 50px; right: 20px; }
+      .faq-label { padding: 18px 16px; font-size: 1.1rem; }
+      .faq-body  { padding: 0 16px; }
+      .faq-item input:checked ~ .faq-body { padding: 16px 16px 22px; }
+    }
+  </style>
+</head>
+
+<body class="font-body antialiased">
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════ -->
+  <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-transparent">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <!-- Minimal float icon -->
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="11" cy="14" rx="9" ry="4" stroke="#D4AF37" stroke-width="0.8" opacity="0.5"/>
+            <circle cx="11" cy="9" r="3.5" stroke="#D4AF37" stroke-width="0.9"/>
+            <line x1="11" y1="1" x2="11" y2="3.5" stroke="#D4AF37" stroke-width="0.8" opacity="0.6"/>
+          </svg>
+          <span class="font-display text-lg font-light tracking-ultra text-brand-gold">ZEN FLOAT</span>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <div class="hidden md:flex items-center gap-8 lg:gap-10">
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#faq"      class="nav-link">FAQ</a>
+          <a href="#contact"  class="nav-link">Contact</a>
+        </div>
+
+        <!-- Right: Lang Toggle + CTA -->
+        <div class="hidden md:flex items-center gap-5">
+          <div class="lang-toggle">
+            <button class="lang-btn active" onclick="setLang('en', this)">EN</button>
+            <button class="lang-btn"        onclick="setLang('nl', this)">NL</button>
+          </div>
+          <a href="#book" class="btn-ghost text-xs py-2.5 px-5">Book Now</a>
+        </div>
+
+        <!-- Hamburger (mobile) -->
+        <button id="hamburger" class="md:hidden flex flex-col justify-center gap-1.5 w-7 h-7 group" onclick="toggleMenu()">
+          <span class="block w-6 h-px bg-brand-gold transition-transform duration-300"></span>
+          <span class="block w-4 h-px bg-brand-gold/50 transition-all duration-300"></span>
+          <span class="block w-5 h-px bg-brand-gold transition-transform duration-300"></span>
+        </button>
+
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden flex-col gap-4 pb-6 pt-2 border-t border-brand-gold/10">
+        <a href="#services" class="nav-link block py-2" onclick="toggleMenu()">Services</a>
+        <a href="#faq"      class="nav-link block py-2" onclick="toggleMenu()">FAQ</a>
+        <a href="#contact"  class="nav-link block py-2" onclick="toggleMenu()">Contact</a>
+        <div class="flex items-center gap-4 pt-2">
+          <div class="lang-toggle">
+            <button class="lang-btn active" onclick="setLang('en', this)">EN</button>
+            <button class="lang-btn"        onclick="setLang('nl', this)">NL</button>
+          </div>
+          <a href="#book" class="btn-ghost text-xs">Book</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="hero">
+    <div id="hero-bg"></div>
+    <div id="hero-grain"></div>
+
+    <!-- Subtle horizontal gold lines -->
+    <div class="absolute top-1/3 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-gold/8 to-transparent pointer-events-none"></div>
+    <div class="absolute bottom-1/3 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-gold/6 to-transparent pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-6 py-32 flex flex-col items-center gap-8">
+
+      <p class="hero-eyebrow">Amsterdam · Certified Float Therapy</p>
+
+      <h1 class="hero-h1 text-5xl sm:text-6xl md:text-7xl lg:text-8xl px-2">
+        Keep Calm,<br/>
+        <span class="gold-text">Just Float.</span>
+      </h1>
+
+      <p class="hero-sub max-w-md text-base sm:text-lg leading-relaxed text-center">
+        Immerse yourself in a private pod of body-temperature saltwater. 
+        No light. No sound. Just the quiet hum of your own consciousness.
+      </p>
+
+      <!-- Stats strip -->
+      <div class="hero-cta flex flex-col sm:flex-row gap-3 sm:gap-5 w-full sm:w-auto items-center">
+        <a href="#book" class="btn-gold">Book a Session</a>
+        <a href="#services" class="btn-ghost">Explore Sessions</a>
+      </div>
+
+      <!-- Proof metrics -->
+      <div class="flex items-center gap-8 pt-4 animate-fade-in" style="animation-delay:1.2s; animation-fill-mode:both;">
+        <div class="text-center">
+          <div class="font-display text-2xl font-light text-white">550 kg</div>
+          <div class="text-xs tracking-widest uppercase text-gray-500 mt-0.5">Epsom Salt</div>
+        </div>
+        <div class="w-px h-8 bg-brand-gold/20"></div>
+        <div class="text-center">
+          <div class="font-display text-2xl font-light text-white">34.5°C</div>
+          <div class="text-xs tracking-widest uppercase text-gray-500 mt-0.5">Body Temp</div>
+        </div>
+        <div class="w-px h-8 bg-brand-gold/20"></div>
+        <div class="text-center">
+          <div class="font-display text-2xl font-light text-white">0 db</div>
+          <div class="text-xs tracking-widest uppercase text-gray-500 mt-0.5">Sound</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in" style="animation-delay:1.6s; animation-fill-mode:both;">
+      <span class="text-xs tracking-ultra uppercase text-gray-600 font-light">Scroll</span>
+      <div class="w-px h-10 relative overflow-hidden bg-brand-gold/15">
+        <div class="absolute top-0 w-full bg-brand-gold animate-[scrollPulse_2s_ease-in-out_infinite]" style="height:40%;animation:scrollPulse 2.2s ease-in-out infinite;"></div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes scrollPulse {
+      0%   { transform: translateY(-100%); }
+      50%  { transform: translateY(250%); }
+      100% { transform: translateY(250%); }
+    }
+  </style>
+
+  <!-- ═══════════════════════════════════════════════
+       INTRO STRIP (Ambiance Quote)
+  ═══════════════════════════════════════════════ -->
+  <section class="py-24 px-6 border-y border-brand-gold/8 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-brand-gold/[0.025] to-transparent pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <div class="section-divider mb-10"></div>
+      <blockquote class="strip-quote">
+        "Floating is not doing nothing — it is the art of becoming 
+        <em class="text-brand-gold">fully present</em> 
+        in the most profound silence you will ever experience."
+      </blockquote>
+      <div class="section-divider mt-10"></div>
+      <p class="text-xs tracking-widest uppercase text-gray-600 mt-6">— Zen Float Philosophy</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       SERVICES SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="services" class="py-28 px-6 lg:px-10 relative">
+
+    <!-- Decorative blurs -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-magenta/4 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-gold/4 rounded-full blur-3xl pointer-events-none translate-y-1/2 -translate-x-1/2"></div>
+
+    <div class="max-w-7xl mx-auto">
+
+      <!-- Section header -->
+      <div class="text-center mb-20 reveal">
+        <p class="section-eyebrow mb-4">What We Offer</p>
+        <h2 class="section-title text-4xl sm:text-5xl lg:text-6xl">Float Sessions</h2>
+        <p class="text-gray-500 font-light max-w-md mx-auto mt-5 text-sm leading-relaxed">
+          Choose the depth of stillness that suits your journey. 
+          Every session includes a private shower suite and premium towels.
+        </p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+
+        <!-- Card 1: Intro Float -->
+        <div class="service-card p-8 lg:p-10 reveal reveal-delay-1">
+          <div class="flex items-start justify-between mb-8">
+            <div class="service-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2z"/>
+                <path d="M3 20c0-4 4-7 9-7s9 3 9 7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="text-right">
+              <div class="service-price">€59</div>
+              <div class="service-duration">60 min</div>
+            </div>
+          </div>
+          <h3 class="font-display text-2xl font-light text-white mb-3">Intro Float</h3>
+          <p class="text-sm text-gray-500 font-light leading-relaxed mb-8">
+            Your first step into weightlessness. A guided orientation + 
+            60 minutes of pure sensory reduction. 
+            The ideal entry point for first-timers.
+          </p>
+          <ul class="space-y-2.5 mb-8">
+            <li class="flex items-center gap-2.5 text-xs text-gray-500 tracking-wide">
+              <span class="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0"></span>
+              Private float pod
+            </li>
+            <li class="flex items-center gap-2.5 text-xs text-gray-500 tracking-wide">
+              <span class="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0"></span>
+              Pre-session audio guide
+            </li>
+            <li class="flex items-center gap-2.5 text-xs text-gray-500 tracking-wide">
+              <span class="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0"></span>
+              Shower + towel included
+            </li>
+          </ul>
+          <a href="#book" class="btn-ghost w-full text-center block">Book Session</a>
+        </div>
+
+        <!-- Card 2: Deep Immersion (featured) -->
+        <div class="service-card p-8 lg:p-10 reveal reveal-delay-2 md:-mt-4 md:mb-4"
+             style="border-color:rgba(212,175,55,0.28); background:linear-gradient(160deg,#1c1c1e 0%,#18181b 100%);">
+          <!-- Featured badge -->
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <span class="px-4 py-1 bg-brand-gold text-zinc-950 text-xs font-medium tracking-widest uppercase">
+              Most Popular
+            </span>
+          </div>
+          <div class="flex items-start justify-between mb-8 pt-3">
+            <div class="service-icon" style="border-color:rgba(212,175,55,0.35);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <path d="M12 3C8 3 4 6 4 10c0 5 8 11 8 11s8-6 8-11c0-4-4-7-8-7z"/>
+                <circle cx="12" cy="10" r="2.5"/>
+              </svg>
+            </div>
+            <div class="text-right">
+              <div class="service-price">€89</div>
+              <div class="service-duration">90 min</div>
+            </div>
+          </div>
+          <h3 class="font-display text-2xl font-light text-white mb-3">Deep Immersion</h3>
+          <p class="text-sm text-gray-500 font-light leading-relaxed mb-8">
+            The signature Zen Float experience. 90 minutes to dissolve 
+            into stillness — enough time to reach theta brainwave states 
+            and return with clarity.
+          </p>
+          <ul class="space-y-2.5 mb-8">
+            <li class="flex items-center gap-2.5 text-xs text-gray-500 tracking-wide">
+              <span class="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0"></span>
+              Private float pod
+            </li>
+            <li class="flex items-center gap-2.5 text-xs text-gray-500 tracking-wide">
+              <span class="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0"></span>
+              Ambient transition music
+            </li>
+            <li class="flex items-center gap-2.5 text-xs text-gray-500 tracking-wide">
+              <span class="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0"></span>
+              Post-float tea & journal
+            </li>
+            <li class="flex items-center gap-2.5 text-xs text-gray-500 tracking-wide">
+              <span class="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0"></span>
+              Shower suite + organic towels
+            </li>
+          </ul>
+          <a href="#book" class="btn-gold w-full text-center block">Book Session</a>
+        </div>
+
+        <!-- Card 3: Ritual Package -->
+        <div class="service-card p-8 lg:p-10 reveal reveal-delay-3">
+          <div class="flex items-start justify-between mb-8">
+            <div class="service-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <div class="text-right">
+              <div class="service-price">€229</div>
+              <div class="service-duration">3 × 90 min</div>
+            </div>
+          </div>
+          <h3 class="font-display text-2xl font-light text-white mb-3">Ritual Package</h3>
+          <p class="text-sm text-gray-500 font-light leading-relaxed mb-8">
+            Three deep-immersion sessions — the minimum recommended 
+            to experience cumulative benefits for stress, sleep, 
+            and creative clarity.
+          </p>
+          <ul class="space-y-2.5 mb-8">
+            <li class="flex items-center gap-2.5 text-xs text-gray-500 tracking-wide">
+              <span class="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0"></span>
+              3 × 90-min Deep Immersion
+            </li>
+            <li class="flex items-center gap-2.5 text-xs text-gray-500 tracking-wide">
+              <span class="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0"></span>
+              Personal float journal
+            </li>
+            <li class="flex items-center gap-2.5 text-xs text-gray-500 tracking-wide">
+              <span class="w-1 h-1 rounded-full bg-brand-gold flex-shrink-0"></span>
+              Priority scheduling
+            </li>
+          </ul>
+          <a href="#book" class="btn-ghost w-full text-center block">Book Package</a>
+        </div>
+
+      </div><!-- /grid -->
+
+      <!-- Trust bar -->
+      <div class="mt-16 pt-12 border-t border-brand-gold/8 flex flex-wrap justify-center gap-10 reveal">
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 flex items-center justify-center border border-brand-blue/30 rounded-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 tracking-wide">RIVM Certified Hygiene</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 flex items-center justify-center border border-brand-blue/30 rounded-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 tracking-wide">Flexible Rescheduling</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 flex items-center justify-center border border-brand-blue/30 rounded-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 tracking-wide">4.9 ★ on Google (240+)</span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 flex items-center justify-center border border-brand-blue/30 rounded-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </div>
+          <span class="text-xs text-gray-500 tracking-wide">Gift Cards Available</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       FAQ SECTION
+  ═══════════════════════════════════════════════ -->
+  <section id="faq" class="py-28 px-6 lg:px-10 border-t border-brand-gold/8 relative">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-brand-gold/25 to-transparent"></div>
+
+    <div class="max-w-3xl mx-auto">
+
+      <!-- Header -->
+      <div class="text-center mb-16 reveal">
+        <p class="section-eyebrow mb-4">Got Questions?</p>
+        <h2 class="section-title text-4xl sm:text-5xl">Frequently Asked</h2>
+      </div>
+
+      <!-- Accordion -->
+      <div class="flex flex-col gap-px reveal">
+
+        <!-- Q1 -->
+        <div class="faq-item bg-zinc-950">
+          <input type="checkbox" id="faq1" name="faq" />
+          <label class="faq-label" for="faq1">
+            <span>Is floating safe if I can't swim?</span>
+            <span class="faq-icon">+</span>
+          </label>
+          <div class="faq-body">
+            Absolutely. The water in our float pods is only 25–30 cm deep, and the ultra-high 
+            concentration of Epsom salt (approximately 550 kg per pod) means your body floats effortlessly 
+            on the surface — no swimming ability required. You stay completely in control and can sit up 
+            or exit at any time.
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item bg-zinc-950">
+          <input type="checkbox" id="faq2" name="faq" />
+          <label class="faq-label" for="faq2">
+            <span>What should I do to prepare for my first float?</span>
+            <span class="faq-icon">+</span>
+          </label>
+          <div class="faq-body">
+            Avoid caffeine 4–6 hours before your session. Don't shave or wax within 24 hours as 
+            the salt can sting. Eat a light meal about an hour prior — not too full, not too hungry. 
+            We provide earplugs, a neck float pillow, and a thorough pre-session briefing. 
+            All you need to bring is yourself.
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item bg-zinc-950">
+          <input type="checkbox" id="faq3" name="faq" />
+          <label class="faq-label" for="faq3">
+            <span>How is the water kept clean and hygienic?</span>
+            <span class="faq-icon">+</span>
+          </label>
+          <div class="faq-body">
+            Our filtration system cycles the entire volume of salt water through a 
+            1-micron filter between every session. We use UV sterilisation and a 
+            minimum concentration of hydrogen peroxide — far safer and gentler than 
+            chlorine. The extreme salinity also creates a naturally hostile environment 
+            for bacteria. Our hygiene protocols are RIVM-certified.
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item bg-zinc-950">
+          <input type="checkbox" id="faq4" name="faq" />
+          <label class="faq-label" for="faq4">
+            <span>Can I use float therapy during pregnancy?</span>
+            <span class="faq-icon">+</span>
+          </label>
+          <div class="faq-body">
+            Many pregnant women find floating deeply relieving — especially in the 
+            second and third trimesters when the weightlessness takes pressure off 
+            the spine and joints. We recommend consulting your midwife or GP first.
+            We do ask that you avoid floating in the first trimester out of precaution.
+          </div>
+        </div>
+
+      </div><!-- /accordion -->
+
+      <div class="text-center mt-14 reveal">
+        <p class="text-sm text-gray-500 font-light mb-5">Have more questions?</p>
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       CONTACT / BOOKING CTA BLOCK
+  ═══════════════════════════════════════════════ -->
+  <section id="contact" class="py-28 px-6 lg:px-10 border-t border-brand-gold/8 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_100%,rgba(212,175,55,0.05),transparent)] pointer-events-none"></div>
+
+    <div class="max-w-xl mx-auto text-center reveal">
+      <p class="section-eyebrow mb-4">Reserve Your Stillness</p>
+      <h2 class="section-title text-4xl sm:text-5xl mb-6" id="book">Ready to Float?</h2>
+      <p class="text-gray-500 font-light text-sm leading-relaxed mb-10">
+        Choose a date and time that suits your schedule. 
+        Sessions available seven days a week, from 8:00 to 22:00.
+        Same-day bookings welcome (subject to availability).
+      </p>
+
+      <!-- Minimal booking form mockup -->
+      <div class="bg-zinc-900 border border-brand-gold/12 p-8 text-left space-y-4 mb-6">
+        <div>
+          <label class="block text-xs tracking-widest uppercase text-gray-600 mb-2">Session Type</label>
+          <select class="w-full bg-zinc-950 border border-brand-gold/15 text-gray-300 text-sm font-light px-4 py-3 focus:outline-none focus:border-brand-gold/40 transition-colors appearance-none cursor-pointer">
+            <option>Intro Float — 60 min — €59</option>
+            <option selected>Deep Immersion — 90 min — €89</option>
+            <option>Ritual Package — 3 × 90 min — €229</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs tracking-widest uppercase text-gray-600 mb-2">Date</label>
+            <input type="date" class="w-full bg-zinc-950 border border-brand-gold/15 text-gray-400 text-sm font-light px-4 py-3 focus:outline-none focus:border-brand-gold/40 transition-colors" />
+          </div>
+          <div>
+            <label class="block text-xs tracking-widest uppercase text-gray-600 mb-2">Time</label>
+            <select class="w-full bg-zinc-950 border border-brand-gold/15 text-gray-400 text-sm font-light px-4 py-3 focus:outline-none focus:border-brand-gold/40 transition-colors appearance-none cursor-pointer">
+              <option>09:00</option>
+              <option>11:00</option>
+              <option>13:30</option>
+              <option>16:00</option>
+              <option>18:30</option>
+              <option>20:00</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs tracking-widest uppercase text-gray-600 mb-2">Full Name</label>
+          <input type="text" placeholder="Your name" class="w-full bg-zinc-950 border border-brand-gold/15 text-gray-300 text-sm font-light px-4 py-3 placeholder:text-gray-700 focus:outline-none focus:border-brand-gold/40 transition-colors" />
+        </div>
+        <div>
+          <label class="block text-xs tracking-widest uppercase text-gray-600 mb-2">Email</label>
+          <input type="email" placeholder="you@example.com" class="w-full bg-zinc-950 border border-brand-gold/15 text-gray-300 text-sm font-light px-4 py-3 placeholder:text-gray-700 focus:outline-none focus:border-brand-gold/40 transition-colors" />
+        </div>
+      </div>
+      <button class="btn-gold w-full">Confirm Reservation</button>
+      <p class="text-xs text-gray-600 mt-4 font-light tracking-wide">No payment required now · Free cancellation 24h before</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer id="footer" class="border-t border-brand-gold/8 bg-zinc-950/80 py-12 px-6 lg:px-10">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <svg width="18" height="18" viewBox="0 0 22 22" fill="none">
+            <ellipse cx="11" cy="14" rx="9" ry="4" stroke="#D4AF37" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="11" cy="9" r="3.5" stroke="#D4AF37" stroke-width="0.9"/>
+            <line x1="11" y1="1" x2="11" y2="3.5" stroke="#D4AF37" stroke-width="0.8" opacity="0.5"/>
+          </svg>
+          <span class="font-display text-sm tracking-ultra text-brand-gold/80">ZEN FLOAT</span>
+        </div>
+
+        <!-- Links -->
+        <nav class="flex flex-wrap items-center justify-center gap-6">
+          <a href="#">Privacy Policy</a>
+          <span class="text-gray-800">·</span>
+          <a href="#">General Conditions</a>
+          <span class="text-gray-800">·</span>
+          <a href="#">Cookie Statement</a>
+          <span class="text-gray-800">·</span>
+          <a href="#">Sitemap</a>
+        </nav>
+
+        <!-- Social / contact -->
+        <div class="flex items-center gap-4">
+          <!-- Instagram icon -->
+          <a href="#" class="w-8 h-8 border border-gray-800 hover:border-brand-gold/40 flex items-center justify-center transition-colors group" aria-label="Instagram">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" class="group-hover:stroke-brand-gold transition-colors">
+              <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="#6b7280"/>
+            </svg>
+          </a>
+          <!-- Facebook icon -->
+          <a href="#" class="w-8 h-8 border border-gray-800 hover:border-brand-gold/40 flex items-center justify-center transition-colors group" aria-label="Facebook">
+            <svg width="11" height="13" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.5" class="group-hover:stroke-brand-gold transition-colors">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Bottom line -->
+      <div class="mt-8 pt-6 border-t border-white/5 text-center">
+        <p class="text-xs text-gray-700 tracking-widest">
+          © 2025 Zen Float B.V. — All rights reserved. 
+          Floating in Amsterdam since 2019.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════════ -->
+  <script>
+    // ── Nav scroll effect ──
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Mobile menu ──
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('open');
+    }
+
+    // ── Language toggle ──
+    function setLang(lang, btn) {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      // Toggle sibling in each lang-toggle group
+      btn.closest('.lang-toggle').querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // Sync mobile/desktop toggles
+      document.querySelectorAll('.lang-toggle').forEach(group => {
+        group.querySelectorAll('.lang-btn').forEach(b => {
+          b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang);
+        });
+      });
+    }
+
+    // ── Scroll Reveal ──
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ── FAQ: only allow one open at a time ──
+    document.querySelectorAll('.faq-item input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', function () {
+        if (this.checked) {
+          document.querySelectorAll('.faq-item input[type="checkbox"]').forEach(other => {
+            if (other !== this) other.checked = false;
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
