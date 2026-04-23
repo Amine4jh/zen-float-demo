@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zen Float | Premium Sensory Deprivation</title>
+
+    <!-- Google Fonts: Playfair Display for elegant headings, Outfit for clean body copy -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "brand-gold": "#D4AF37",
+              "brand-magenta": "#B33C86",
+              "brand-blue": "#3B82F6",
+              "spa-beige": "#EFEBE4",
+              "spa-dark": "#121212",
+              "spa-aqua": "#0A3A40",
+            },
+            fontFamily: {
+              sans: ["Outfit", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* ── Custom scrollbar ── */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #09090b;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #d4af37;
+        border-radius: 99px;
+      }
+      /* Custom hide scrollbar for cleaner look if needed, and smooth details transition */
+      details > summary {
+        list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      /* Scroll Reveal Animation Classes */
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+      }
+      .scroll-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .delay-100 {
+        transition-delay: 100ms;
+      }
+      .delay-200 {
+        transition-delay: 200ms;
+      }
+      .delay-300 {
+        transition-delay: 300ms;
+      }
+    </style>
+  </head>
+  <body class="bg-spa-dark text-white font-sans antialiased overflow-x-hidden">
+    <!-- Navigation (Initially Transparent) -->
+    <nav
+      class="fixed w-full z-50 transition-all duration-500 py-4 bg-transparent border-b border-transparent"
+      id="navbar"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo -->
+          <div class="flex-shrink-0 flex items-center">
+            <a
+              href="#"
+              class="font-serif text-brand-gold text-2xl md:text-3xl font-bold tracking-wider uppercase"
+              >Zen Float</a
+            >
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-8 items-center">
+            <a
+              href="#about"
+              class="text-white hover:text-brand-gold transition-colors text-sm uppercase tracking-widest font-medium"
+              >About</a
+            >
+            <a
+              href="#services"
+              class="text-white hover:text-brand-gold transition-colors text-sm uppercase tracking-widest font-medium"
+              >Services</a
+            >
+            <a
+              href="#faq"
+              class="text-white hover:text-brand-gold transition-colors text-sm uppercase tracking-widest font-medium"
+              >FAQ</a
+            >
+            <a
+              href="#contact"
+              class="text-white hover:text-brand-gold transition-colors text-sm uppercase tracking-widest font-medium"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Language Toggle & Mobile Menu Button -->
+          <div class="flex items-center space-x-6">
+            <div
+              class="hidden md:flex text-sm font-medium tracking-widest uppercase"
+            >
+              <button class="text-brand-gold font-bold mr-2">EN</button>
+              <span class="text-white/50">|</span>
+              <button
+                class="text-white hover:text-brand-gold ml-2 transition-colors"
+              >
+                NL
+              </button>
+            </div>
+
+            <!-- Mobile hamburger -->
+            <button
+              id="mobile-menu-btn"
+              class="md:hidden text-white hover:text-brand-gold focus:outline-none"
+            >
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu (Hidden by default) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-spa-dark border-t border-brand-gold/20"
+      >
+        <div class="px-4 pt-2 pb-6 space-y-1">
+          <a
+            href="#about"
+            class="block px-3 py-3 text-base font-medium text-white hover:text-brand-gold uppercase tracking-widest"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="block px-3 py-3 text-base font-medium text-white hover:text-brand-gold uppercase tracking-widest"
+            >Services</a
+          >
+          <a
+            href="#faq"
+            class="block px-3 py-3 text-base font-medium text-white hover:text-brand-gold uppercase tracking-widest"
+            >FAQ</a
+          >
+          <a
+            href="#contact"
+            class="block px-3 py-3 text-base font-medium text-white hover:text-brand-gold uppercase tracking-widest"
+            >Contact</a
+          >
+          <div
+            class="px-3 py-3 flex text-base font-medium tracking-widest uppercase mt-4 border-t border-white/10 pt-4"
+          >
+            <button class="text-brand-gold font-bold mr-4">EN</button>
+            <button class="text-white hover:text-brand-gold transition-colors">
+              NL
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section (Dark Block with Image) -->
+    <section class="relative h-screen flex items-center justify-center">
+      <!-- Background Image with Dark Overlay (Using deep water imagery) -->
+      <div class="absolute inset-0 w-full h-full">
+        <img
+          src="https://images.unsplash.com/photo-1519781542704-957ff19eff00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+          alt="Dark sensory deprivation water"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-spa-dark/75"></div>
+        <!-- No gray, using spa-dark -->
+      </div>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+        <h1
+          class="text-5xl md:text-7xl lg:text-8xl font-serif text-white font-bold leading-tight mb-6 scroll-reveal"
+        >
+          Keep Calm,<br /><span class="italic font-light text-brand-gold"
+            >Just Float</span
+          >
+        </h1>
+        <p
+          class="text-lg md:text-xl text-spa-beige mb-10 max-w-2xl mx-auto font-light leading-relaxed scroll-reveal delay-100"
+        >
+          Step away from the noise of the world. Experience total
+          weightlessness, deep physical recovery, and profound mental clarity in
+          our premium sensory deprivation pods.
+        </p>
+        <div class="scroll-reveal delay-200">
+          <a
+            href="#services"
+            class="inline-flex items-center justify-center px-10 py-4 text-spa-dark bg-brand-gold text-lg font-bold uppercase tracking-widest hover:bg-white hover:scale-105 transition-all duration-300 rounded-sm"
+          >
+            Book a Session
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section (Light Block) -->
+    <!-- Contrast Rule: Background is Light (spa-beige), Text/Elements are Dark (spa-dark) -->
+    <section id="about" class="py-24 md:py-32 bg-spa-beige text-spa-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <!-- Image Side -->
+          <div class="relative group scroll-reveal">
+            <div
+              class="absolute -inset-4 border border-brand-gold/30 rounded-t-full rounded-b-md transform translate-x-2 translate-y-2 transition-transform group-hover:translate-x-0 group-hover:translate-y-0 duration-500"
+            ></div>
+            <img
+              src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="Luxurious spa atmosphere"
+              class="relative rounded-t-full rounded-b-md shadow-2xl object-cover h-[600px] w-full"
+            />
+          </div>
+
+          <!-- Text Side -->
+          <div class="space-y-8 scroll-reveal delay-200">
+            <div>
+              <h4
+                class="text-brand-magenta font-bold tracking-[0.2em] uppercase text-sm mb-4"
+              >
+                The Zen Experience
+              </h4>
+              <h2
+                class="text-4xl md:text-5xl font-serif font-bold text-spa-dark leading-tight"
+              >
+                Discover the power of
+                <span class="text-brand-gold italic">nothingness</span>.
+              </h2>
+            </div>
+            <p class="text-lg leading-relaxed text-spa-dark/90">
+              Floating is a practice of profound relaxation. By resting in
+              skin-temperature water saturated with Epsom salts, your body
+              experiences true weightlessness. The absence of external sensory
+              input allows your mind to enter a deeply meditative state.
+            </p>
+            <p class="text-lg leading-relaxed text-spa-dark/90">
+              Whether you are seeking relief from chronic pain, an escape from
+              daily stress, or a space for creative visualization, the void
+              provides exactly what you need.
+            </p>
+
+            <div
+              class="pt-6 grid grid-cols-2 gap-8 border-t border-spa-dark/10"
+            >
+              <div>
+                <h5 class="font-serif text-3xl font-bold text-brand-gold mb-2">
+                  35%
+                </h5>
+                <p
+                  class="text-sm font-medium tracking-wider uppercase text-spa-dark/80"
+                >
+                  Epsom Salt Concentration
+                </p>
+              </div>
+              <div>
+                <h5 class="font-serif text-3xl font-bold text-brand-gold mb-2">
+                  35.5°C
+                </h5>
+                <p
+                  class="text-sm font-medium tracking-wider uppercase text-spa-dark/80"
+                >
+                  Skin-Receptor Neutral
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section (Dark Teal Block) -->
+    <!-- Contrast Rule: Background is Dark (spa-aqua), Cards are Light (white) with Dark Text -->
+    <section id="services" class="py-24 md:py-32 bg-spa-aqua">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-20 scroll-reveal">
+          <h4
+            class="text-brand-gold font-bold tracking-[0.2em] uppercase text-sm mb-4"
+          >
+            Our Offerings
+          </h4>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
+            Curated Wellness
+          </h2>
+          <p class="text-spa-beige text-lg font-light">
+            Choose your path to tranquility. Our services are designed to
+            harmonize your body and mind in our state-of-the-art facilities.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+          <!-- Card 1 -->
+          <div
+            class="bg-white p-10 rounded-sm shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.3)] group relative overflow-hidden scroll-reveal"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-spa-beige rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110 duration-500"
+            ></div>
+            <div class="relative z-10">
+              <div
+                class="w-16 h-16 bg-spa-dark rounded-full flex items-center justify-center mb-8 shadow-lg"
+              >
+                <i data-lucide="waves" class="w-8 h-8 text-brand-gold"></i>
+              </div>
+              <h3 class="text-2xl font-serif font-bold text-spa-dark mb-4">
+                Single Float
+              </h3>
+              <p class="text-spa-dark/80 mb-8 leading-relaxed">
+                60 or 90 minutes of pure sensory deprivation in our premium,
+                spacious pods. Ideal for deep physical recovery and stress
+                relief.
+              </p>
+              <div class="flex items-center justify-between mt-auto">
+                <span class="text-brand-magenta font-bold text-xl">€65</span>
+                <a
+                  href="#"
+                  class="text-spa-dark font-bold uppercase tracking-wider text-sm hover:text-brand-gold transition-colors flex items-center"
+                >
+                  Book <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="bg-white p-10 rounded-sm shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.3)] group relative overflow-hidden border-b-4 border-brand-gold scroll-reveal delay-100"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-spa-beige rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110 duration-500"
+            ></div>
+            <div class="relative z-10">
+              <div
+                class="w-16 h-16 bg-brand-gold rounded-full flex items-center justify-center mb-8 shadow-lg"
+              >
+                <i data-lucide="flower-2" class="w-8 h-8 text-spa-dark"></i>
+              </div>
+              <h3 class="text-2xl font-serif font-bold text-spa-dark mb-4">
+                Float & Massage
+              </h3>
+              <p class="text-spa-dark/80 mb-8 leading-relaxed">
+                The ultimate reset. A 60-minute float session followed by a
+                60-minute deep tissue or relaxing holistic massage.
+              </p>
+              <div class="flex items-center justify-between mt-auto">
+                <span class="text-brand-magenta font-bold text-xl">€145</span>
+                <a
+                  href="#"
+                  class="text-spa-dark font-bold uppercase tracking-wider text-sm hover:text-brand-gold transition-colors flex items-center"
+                >
+                  Book <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="bg-white p-10 rounded-sm shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.3)] group relative overflow-hidden scroll-reveal delay-200"
+          >
+            <div
+              class="absolute top-0 right-0 w-32 h-32 bg-spa-beige rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110 duration-500"
+            ></div>
+            <div class="relative z-10">
+              <div
+                class="w-16 h-16 bg-spa-dark rounded-full flex items-center justify-center mb-8 shadow-lg"
+              >
+                <i data-lucide="users" class="w-8 h-8 text-brand-gold"></i>
+              </div>
+              <h3 class="text-2xl font-serif font-bold text-spa-dark mb-4">
+                Couples Float
+              </h3>
+              <p class="text-spa-dark/80 mb-8 leading-relaxed">
+                Float simultaneously in our dual-room setup, then reconnect over
+                organic herbal tea in our post-float integration lounge.
+              </p>
+              <div class="flex items-center justify-between mt-auto">
+                <span class="text-brand-magenta font-bold text-xl">€120</span>
+                <a
+                  href="#"
+                  class="text-spa-dark font-bold uppercase tracking-wider text-sm hover:text-brand-gold transition-colors flex items-center"
+                >
+                  Book <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner Break (Dark Image Block) -->
+    <section
+      class="relative py-32 flex items-center justify-center border-y-2 border-brand-gold/30"
+    >
+      <div class="absolute inset-0 w-full h-full">
+        <img
+          src="https://images.unsplash.com/photo-1605510650942-8c11e646ebcf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+          alt="Zen stones in water"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-spa-dark/85"></div>
+      </div>
+
+      <div
+        class="relative z-10 text-center px-4 max-w-3xl mx-auto scroll-reveal"
+      >
+        <i
+          data-lucide="droplets"
+          class="w-12 h-12 text-brand-gold mx-auto mb-8 opacity-80"
+        ></i>
+        <h3
+          class="text-3xl md:text-5xl font-serif font-light italic text-white leading-relaxed"
+        >
+          "The quietest space you will ever enter is the space within."
+        </h3>
+      </div>
+    </section>
+
+    <!-- FAQ Section (Dark Void Block) -->
+    <!-- Contrast Rule: Background is Dark (spa-dark), Accordions are Light (white) with Dark Text -->
+    <section
+      id="faq"
+      class="py-24 md:py-32 bg-spa-dark border-b border-white/5"
+    >
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 scroll-reveal">
+          <h4
+            class="text-brand-gold font-bold tracking-[0.2em] uppercase text-sm mb-4"
+          >
+            First Time?
+          </h4>
+          <h2 class="text-4xl md:text-5xl font-serif font-bold text-white">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          <!-- FAQ Item 1 -->
+          <details
+            class="group bg-white text-spa-dark rounded-sm overflow-hidden transition-all duration-300 shadow-lg scroll-reveal"
+            open
+          >
+            <summary
+              class="flex justify-between items-center cursor-pointer p-6 md:p-8 hover:bg-spa-beige transition-colors"
+            >
+              <h3 class="text-xl font-serif font-bold pr-4">
+                What do I need to bring?
+              </h3>
+              <span
+                class="transform transition-transform duration-300 group-open:-rotate-180 bg-spa-dark/5 p-2 rounded-full"
+              >
+                <i
+                  data-lucide="chevron-down"
+                  class="w-5 h-5 text-brand-magenta"
+                ></i>
+              </span>
+            </summary>
+            <div class="px-6 md:px-8 pb-8 pt-2">
+              <p class="text-spa-dark/90 leading-relaxed">
+                Just yourself. We provide everything you need including towels,
+                earplugs, organic body wash, shampoo, and post-float amenities
+                like hairdryers and moisturizer. Most people choose to float in
+                the nude for the ultimate sensory deprivation experience, as
+                swimsuits can create distracting tactile sensations.
+              </p>
+            </div>
+          </details>
+
+          <!-- FAQ Item 2 -->
+          <details
+            class="group bg-white text-spa-dark rounded-sm overflow-hidden transition-all duration-300 shadow-lg scroll-reveal delay-100"
+          >
+            <summary
+              class="flex justify-between items-center cursor-pointer p-6 md:p-8 hover:bg-spa-beige transition-colors"
+            >
+              <h3 class="text-xl font-serif font-bold pr-4">
+                What if I'm claustrophobic?
+              </h3>
+              <span
+                class="transform transition-transform duration-300 group-open:-rotate-180 bg-spa-dark/5 p-2 rounded-full"
+              >
+                <i
+                  data-lucide="chevron-down"
+                  class="w-5 h-5 text-brand-magenta"
+                ></i>
+              </span>
+            </summary>
+            <div class="px-6 md:px-8 pb-8 pt-2">
+              <p class="text-spa-dark/90 leading-relaxed">
+                Our modern float pods are extremely spacious—the size of a small
+                car interior. You have complete control over your environment.
+                You can leave the pod door open, keep the interior soft LED
+                lights on, or play relaxing music until you feel comfortable
+                exploring total darkness and silence.
+              </p>
+            </div>
+          </details>
+
+          <!-- FAQ Item 3 -->
+          <details
+            class="group bg-white text-spa-dark rounded-sm overflow-hidden transition-all duration-300 shadow-lg scroll-reveal delay-200"
+          >
+            <summary
+              class="flex justify-between items-center cursor-pointer p-6 md:p-8 hover:bg-spa-beige transition-colors"
+            >
+              <h3 class="text-xl font-serif font-bold pr-4">
+                Is the water completely clean?
+              </h3>
+              <span
+                class="transform transition-transform duration-300 group-open:-rotate-180 bg-spa-dark/5 p-2 rounded-full"
+              >
+                <i
+                  data-lucide="chevron-down"
+                  class="w-5 h-5 text-brand-magenta"
+                ></i>
+              </span>
+            </summary>
+            <div class="px-6 md:px-8 pb-8 pt-2">
+              <p class="text-spa-dark/90 leading-relaxed">
+                Absolutely. The exceptionally high concentration of Epsom salt
+                creates a highly sterile environment. Additionally, our
+                state-of-the-art filtration system cycles the entire volume of
+                water through a 1-micron filter, UV light, and natural
+                oxidization processes 4 times between every single float
+                session.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <div class="mt-16 text-center scroll-reveal delay-300">
+          <a
+            href="#contact"
+            class="text-brand-gold hover:text-white uppercase tracking-widest font-bold text-sm transition-colors border-b border-brand-gold pb-1"
+            >Have more questions? Contact us</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section (Light Block with Dark Form Card to respect contrast rule) -->
+    <section id="contact" class="py-24 md:py-32 bg-spa-beige text-spa-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <!-- Contact Info (Light Background) -->
+          <div class="space-y-10 scroll-reveal">
+            <div>
+              <h4
+                class="text-brand-magenta font-bold tracking-[0.2em] uppercase text-sm mb-4"
+              >
+                Get in Touch
+              </h4>
+              <h2
+                class="text-4xl md:text-5xl font-serif font-bold text-spa-dark leading-tight mb-6"
+              >
+                Ready to experience
+                <span class="text-brand-gold italic">tranquility</span>?
+              </h2>
+              <p class="text-lg leading-relaxed text-spa-dark/80">
+                Whether you have questions about floating or want to book a
+                specialized group session, our team is here to help you begin
+                your wellness journey.
+              </p>
+            </div>
+
+            <div class="space-y-6">
+              <div class="flex items-center group">
+                <div
+                  class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md mr-6 group-hover:bg-brand-gold group-hover:text-white transition-colors duration-300"
+                >
+                  <i
+                    data-lucide="map-pin"
+                    class="w-5 h-5 text-spa-dark group-hover:text-white transition-colors duration-300"
+                  ></i>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-spa-dark uppercase tracking-wider text-sm mb-1"
+                  >
+                    Location
+                  </h5>
+                  <p class="text-spa-dark/70">
+                    123 Wellness Avenue, 1011 Amsterdam, NL
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center group">
+                <div
+                  class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md mr-6 group-hover:bg-brand-gold group-hover:text-white transition-colors duration-300"
+                >
+                  <i
+                    data-lucide="phone"
+                    class="w-5 h-5 text-spa-dark group-hover:text-white transition-colors duration-300"
+                  ></i>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-spa-dark uppercase tracking-wider text-sm mb-1"
+                  >
+                    Phone
+                  </h5>
+                  <p class="text-spa-dark/70">+31 (0) 20 123 4567</p>
+                </div>
+              </div>
+              <div class="flex items-center group">
+                <div
+                  class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md mr-6 group-hover:bg-brand-gold group-hover:text-white transition-colors duration-300"
+                >
+                  <i
+                    data-lucide="mail"
+                    class="w-5 h-5 text-spa-dark group-hover:text-white transition-colors duration-300"
+                  ></i>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-spa-dark uppercase tracking-wider text-sm mb-1"
+                  >
+                    Email
+                  </h5>
+                  <p class="text-spa-dark/70">hello@zenfloat.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form (Dark Card inside Light Section) -->
+          <div
+            class="bg-spa-dark p-8 md:p-12 rounded-sm shadow-2xl relative scroll-reveal delay-200"
+          >
+            <div
+              class="absolute -top-4 -right-4 w-24 h-24 bg-brand-gold/10 rounded-full blur-2xl"
+            ></div>
+            <form class="relative z-10 space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-xs font-bold text-white/80 mb-2 uppercase tracking-widest"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    class="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-xs font-bold text-white/80 mb-2 uppercase tracking-widest"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    class="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors"
+                    placeholder="your@email.com"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="subject"
+                  class="block text-xs font-bold text-white/80 mb-2 uppercase tracking-widest"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  class="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors"
+                  placeholder="How can we help?"
+                />
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="block text-xs font-bold text-white/80 mb-2 uppercase tracking-widest"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  rows="4"
+                  class="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors resize-none"
+                  placeholder="Your message..."
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full py-4 mt-2 bg-brand-gold text-spa-dark font-bold uppercase tracking-widest hover:bg-white transition-colors duration-300 rounded-sm"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (Dark Block) -->
+    <!-- Contrast Rule: Background is Dark (spa-dark), Text is Light -->
+    <footer class="bg-spa-dark pt-20 pb-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 scroll-reveal">
+          <!-- Brand Info -->
+          <div class="md:col-span-2">
+            <h2
+              class="font-serif text-brand-gold text-3xl font-bold uppercase tracking-wider mb-6"
+            >
+              Zen Float
+            </h2>
+            <p class="text-spa-beige/70 leading-relaxed max-w-sm mb-8">
+              Elevating well-being through zero-gravity rest. Your premier
+              destination for sensory deprivation and holistic recovery.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-brand-gold hover:text-spa-dark transition-all"
+              >
+                <i data-lucide="instagram" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-brand-gold hover:text-spa-dark transition-all"
+              >
+                <i data-lucide="facebook" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-brand-gold hover:text-spa-dark transition-all"
+              >
+                <i data-lucide="twitter" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4
+              class="text-white font-bold tracking-widest uppercase mb-6 text-sm"
+            >
+              Navigation
+            </h4>
+            <ul class="space-y-4 text-spa-beige/70">
+              <li>
+                <a href="#about" class="hover:text-brand-gold transition-colors"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="hover:text-brand-gold transition-colors"
+                  >Our Services</a
+                >
+              </li>
+              <li>
+                <a href="#faq" class="hover:text-brand-gold transition-colors"
+                  >FAQ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="hover:text-brand-gold transition-colors"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Hours -->
+          <div>
+            <h4
+              class="text-white font-bold tracking-widest uppercase mb-6 text-sm"
+            >
+              Hours
+            </h4>
+            <ul class="space-y-3 text-spa-beige/70">
+              <li class="flex justify-between border-b border-white/5 pb-2">
+                <span>Mon - Fri</span> <span>09:00 - 22:00</span>
+              </li>
+              <li class="flex justify-between border-b border-white/5 pb-2">
+                <span>Saturday</span> <span>10:00 - 20:00</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Sunday</span> <span>10:00 - 18:00</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div
+          class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center scroll-reveal delay-100"
+        >
+          <p class="text-spa-beige/50 text-sm mb-4 md:mb-0">
+            &copy; 2026 Zen Float Spa. All rights reserved.
+          </p>
+          <div class="flex space-x-6 text-sm text-spa-beige/50">
+            <a href="#" class="hover:text-brand-gold transition-colors"
+              >Privacy Policy</a
+            >
+            <a href="#" class="hover:text-brand-gold transition-colors"
+              >General Conditions</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Initialize Scripts -->
+    <script>
+      // Initialize Icons
+      lucide.createIcons();
+
+      // Mobile Menu Toggle
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      // Navbar Scroll Effect (Transparent to Dark)
+      window.addEventListener("scroll", () => {
+        const nav = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          // Scrolled state
+          nav.classList.add(
+            "bg-spa-dark/95",
+            "backdrop-blur-md",
+            "border-brand-gold/20",
+            "py-2",
+          );
+          nav.classList.remove("bg-transparent", "border-transparent", "py-4");
+        } else {
+          // Top state
+          nav.classList.add("bg-transparent", "border-transparent", "py-4");
+          nav.classList.remove(
+            "bg-spa-dark/95",
+            "backdrop-blur-md",
+            "border-brand-gold/20",
+            "py-2",
+          );
+        }
+      });
+
+      // Scroll Reveal Animations
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15,
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            // Unobserve to only animate once when scrolled down
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".scroll-reveal").forEach((el) => {
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>
