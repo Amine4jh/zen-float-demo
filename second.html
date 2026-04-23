@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zen Float | Premium Sensory Deprivation</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "brand-gold": "#D4AF37",
+              "brand-magenta": "#B33C86",
+              "brand-blue": "#3B82F6",
+              "spa-beige": "#EFEBE4",
+              "spa-dark": "#121212",
+              "spa-aqua": "#0A3A40",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              serif: ['"Playfair Display"', "serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Hide default summary markers for custom accordion UI */
+      details > summary {
+        list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased text-spa-beige bg-spa-dark">
+    <header
+      class="fixed w-full z-50 transition-all duration-300 bg-spa-dark/95 backdrop-blur-md border-b border-spa-aqua/30"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+      >
+        <a
+          href="#"
+          class="text-brand-gold font-serif text-2xl tracking-widest font-bold flex items-center"
+        >
+          ZEN FLOAT
+        </a>
+
+        <nav
+          class="hidden md:flex items-center gap-10 text-sm font-medium tracking-wider uppercase"
+        >
+          <a href="#about" class="hover:text-brand-gold transition duration-300"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="hover:text-brand-gold transition duration-300"
+            >Services</a
+          >
+          <a href="#faq" class="hover:text-brand-gold transition duration-300"
+            >FAQ</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-brand-gold transition duration-300"
+            >Contact</a
+          >
+        </nav>
+
+        <div
+          class="flex items-center gap-4 text-sm font-semibold uppercase tracking-wider"
+        >
+          <a
+            href="#"
+            class="text-spa-beige hover:text-brand-gold transition duration-300"
+            >NL</a
+          >
+          <span class="text-brand-gold opacity-50">|</span>
+          <span class="text-brand-gold cursor-default">EN</span>
+        </div>
+      </div>
+    </header>
+
+    <section
+      class="relative h-screen flex items-center justify-center overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center"
+      ></div>
+      <div class="absolute inset-0 bg-spa-dark/80 mix-blend-multiply"></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-spa-dark/50 to-spa-dark"
+      ></div>
+
+      <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20">
+        <h1
+          class="text-6xl md:text-8xl font-serif text-white mb-6 leading-tight drop-shadow-lg"
+        >
+          Keep Calm, <br /><span class="italic text-spa-beige"
+            >Just Float.</span
+          >
+        </h1>
+        <p
+          class="text-xl text-spa-beige/90 mb-10 max-w-2xl mx-auto font-light leading-relaxed"
+        >
+          Experience absolute zero gravity and profound mental clarity in our
+          state-of-the-art sensory deprivation tanks.
+        </p>
+        <a
+          href="#services"
+          class="bg-brand-gold text-spa-dark px-10 py-4 rounded-sm uppercase tracking-widest font-bold text-sm hover:bg-white hover:text-spa-dark hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all duration-300 inline-block"
+        >
+          Book a Session
+        </a>
+      </div>
+    </section>
+
+    <section id="about" class="py-24 md:py-32 bg-spa-beige text-spa-dark">
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+      >
+        <div
+          class="relative rounded-t-full overflow-hidden shadow-2xl border-4 border-spa-dark/5"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1520699049698-acd2fce18736?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+            alt="Lotus Flower Spa"
+            class="w-full h-full object-cover aspect-[4/5] hover:scale-105 transition-transform duration-700"
+          />
+        </div>
+
+        <div>
+          <h3
+            class="text-brand-magenta font-semibold tracking-[0.2em] uppercase text-sm mb-4"
+          >
+            The Float Experience
+          </h3>
+          <h2 class="text-4xl md:text-5xl font-serif mb-8 leading-tight">
+            Disconnect to Reconnect
+          </h2>
+          <p class="text-spa-dark/80 text-lg leading-relaxed mb-6">
+            Floating, or Restricted Environmental Stimulation Therapy (REST),
+            provides a highly unique environment free from external sensory
+            input.
+          </p>
+          <p class="text-spa-dark/80 text-lg leading-relaxed mb-8">
+            Suspended in 10 inches of water saturated with 1,000 lbs of Epsom
+            salt, your body floats effortlessly. As the water is heated exactly
+            to skin temperature, the boundary between your body and the water
+            slowly disappears, leaving you in a state of profound peace and
+            physical recovery.
+          </p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-[1px] bg-brand-gold"></div>
+            <span class="font-serif italic text-brand-gold text-xl"
+              >Find Your Void</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="py-24 md:py-32 bg-spa-aqua text-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20">
+          <h3
+            class="text-brand-gold font-semibold tracking-[0.2em] uppercase text-sm mb-4"
+          >
+            Our Offerings
+          </h3>
+          <h2 class="text-4xl md:text-5xl font-serif mb-4">
+            Floatation Therapies
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-spa-beige text-spa-dark p-10 rounded-sm shadow-xl hover:-translate-y-3 transition-all duration-500 border border-transparent hover:border-brand-gold group flex flex-col justify-between h-full"
+          >
+            <div>
+              <h3
+                class="text-2xl font-serif mb-4 group-hover:text-brand-magenta transition-colors duration-300"
+              >
+                The Discovery
+              </h3>
+              <p class="text-spa-dark/80 text-sm leading-relaxed mb-8">
+                A perfect 60-minute session for beginners to acclimate to the
+                sensory reduction environment and discover profound relaxation.
+              </p>
+            </div>
+            <div
+              class="flex items-center justify-between border-t border-spa-dark/10 pt-6 mt-auto"
+            >
+              <span class="font-bold text-lg">€65</span>
+              <span
+                class="text-xs uppercase tracking-widest text-brand-gold font-semibold"
+                >60 Min</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="bg-white text-spa-dark p-10 rounded-sm shadow-xl hover:-translate-y-3 transition-all duration-500 border border-transparent hover:border-brand-gold group flex flex-col justify-between h-full relative overflow-hidden"
+          >
+            <div class="absolute top-0 left-0 w-full h-1 bg-brand-gold"></div>
+            <div>
+              <h3
+                class="text-2xl font-serif mb-4 group-hover:text-brand-magenta transition-colors duration-300"
+              >
+                The Deep Void
+              </h3>
+              <p class="text-spa-dark/80 text-sm leading-relaxed mb-8">
+                Our signature 90-minute immersion designed for deep meditation,
+                muscle recovery, and complete disconnection from the outside
+                world.
+              </p>
+            </div>
+            <div
+              class="flex items-center justify-between border-t border-spa-dark/10 pt-6 mt-auto"
+            >
+              <span class="font-bold text-lg">€85</span>
+              <span
+                class="text-xs uppercase tracking-widest text-brand-gold font-semibold"
+                >90 Min</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="bg-spa-beige text-spa-dark p-10 rounded-sm shadow-xl hover:-translate-y-3 transition-all duration-500 border border-transparent hover:border-brand-gold group flex flex-col justify-between h-full"
+          >
+            <div>
+              <h3
+                class="text-2xl font-serif mb-4 group-hover:text-brand-magenta transition-colors duration-300"
+              >
+                Couples Retreat
+              </h3>
+              <p class="text-spa-dark/80 text-sm leading-relaxed mb-8">
+                Share the tranquility. Two large adjacent float cabins allow you
+                and your partner to float simultaneously, followed by organic
+                tea.
+              </p>
+            </div>
+            <div
+              class="flex items-center justify-between border-t border-spa-dark/10 pt-6 mt-auto"
+            >
+              <span class="font-bold text-lg">€120</span>
+              <span
+                class="text-xs uppercase tracking-widest text-brand-gold font-semibold"
+                >60 Min</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="relative py-32 flex items-center justify-center overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1498092651296-641e88c3b057?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center bg-fixed"
+      ></div>
+      <div class="absolute inset-0 bg-spa-dark/85 mix-blend-multiply"></div>
+
+      <div class="relative z-10 px-6 max-w-4xl mx-auto text-center">
+        <svg
+          class="w-12 h-12 text-brand-gold mx-auto mb-8 opacity-90"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+          ></path>
+        </svg>
+
+        <blockquote
+          class="text-3xl md:text-5xl font-serif text-white leading-tight font-light"
+        >
+          "The mind is like water. When it's turbulent, it's difficult to see.
+          When it's calm, everything becomes clear."
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="faq" class="py-24 md:py-32 bg-spa-dark text-spa-beige">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h3
+            class="text-brand-magenta font-semibold tracking-[0.2em] uppercase text-sm mb-4"
+          >
+            Preparation
+          </h3>
+          <h2 class="text-4xl md:text-5xl font-serif">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          <details class="group bg-white rounded-sm cursor-pointer" open>
+            <summary
+              class="flex items-center justify-between p-6 font-serif text-xl text-spa-dark font-medium select-none"
+            >
+              What should I bring to my float session?
+              <span
+                class="transition-transform duration-300 group-open:rotate-180 text-brand-gold"
+              >
+                <svg
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <path d="M6 9l6 6 6-6"></path>
+                </svg>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 text-spa-dark/80 text-base leading-relaxed">
+              Just bring yourself! We provide everything you need including
+              towels, earplugs, premium organic body wash, and post-float tea.
+              You float completely nude to remove all tactile sensations, so no
+              swimsuit is required.
+            </div>
+          </details>
+
+          <details class="group bg-spa-beige rounded-sm cursor-pointer">
+            <summary
+              class="flex items-center justify-between p-6 font-serif text-xl text-spa-dark font-medium select-none"
+            >
+              Will I feel claustrophobic?
+              <span
+                class="transition-transform duration-300 group-open:rotate-180 text-brand-gold"
+              >
+                <svg
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <path d="M6 9l6 6 6-6"></path>
+                </svg>
+              </span>
+            </summary>
+            <div
+              class="px-6 pb-6 text-spa-dark/80 text-base leading-relaxed border-t border-spa-dark/5 pt-4"
+            >
+              It's highly unlikely. Our tanks are very spacious. You are always
+              in complete control of your environment—you can leave the gentle
+              interior light on, play soft ambient music, or even leave the tank
+              door slightly open if you prefer.
+            </div>
+          </details>
+
+          <details class="group bg-white rounded-sm cursor-pointer">
+            <summary
+              class="flex items-center justify-between p-6 font-serif text-xl text-spa-dark font-medium select-none"
+            >
+              How is the water kept clean?
+              <span
+                class="transition-transform duration-300 group-open:rotate-180 text-brand-gold"
+              >
+                <svg
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <path d="M6 9l6 6 6-6"></path>
+                </svg>
+              </span>
+            </summary>
+            <div
+              class="px-6 pb-6 text-spa-dark/80 text-base leading-relaxed border-t border-spa-dark/5 pt-4"
+            >
+              The heavy concentration of medical-grade Epsom salt makes the
+              water inherently sterile. Furthermore, between every single
+              session, the entire volume of water is cycled three times through
+              an industrial filtration system utilizing UV light, ozone
+              purification, and a 1-micron filter.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      id="contact"
+      class="bg-spa-dark text-spa-beige border-t border-spa-aqua/50 pt-16 pb-8"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 mb-12"
+      >
+        <div>
+          <span
+            class="text-brand-gold font-serif text-2xl tracking-widest font-bold mb-4 block"
+            >ZEN FLOAT</span
+          >
+          <p class="text-sm opacity-70 leading-relaxed max-w-xs">
+            Elevating human consciousness and accelerating physical recovery,
+            one float at a time.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-serif text-lg text-white mb-4">Visit Us</h4>
+          <address class="not-italic text-sm opacity-70 leading-relaxed">
+            123 Wellness Avenue<br />
+            1011 AB Amsterdam, NL<br />
+            <a
+              href="mailto:hello@zenfloat.com"
+              class="hover:text-brand-gold transition duration-300 mt-2 block"
+              >hello@zenfloat.com</a
+            >
+          </address>
+        </div>
+
+        <div class="md:text-right">
+          <h4 class="font-serif text-lg text-white mb-4">Legal</h4>
+          <div class="flex flex-col md:items-end gap-2 text-sm opacity-70">
+            <a href="#" class="hover:text-brand-gold transition duration-300"
+              >Privacy Policy</a
+            >
+            <a href="#" class="hover:text-brand-gold transition duration-300"
+              >General Conditions</a
+            >
+            <a href="#" class="hover:text-brand-gold transition duration-300"
+              >Cookie Settings</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="max-w-7xl mx-auto px-6 text-center text-xs opacity-50 border-t border-spa-beige/10 pt-8"
+      >
+        &copy; 2026 Zen Float Spa. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>
